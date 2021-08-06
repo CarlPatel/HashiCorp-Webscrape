@@ -53,7 +53,8 @@ def hyperlink(words, link):
 ### CHANGE FILE NAME ###
 wb = xlrd.open_workbook("SFDC Report.xlsx")
 shmain = wb.sheet_by_index(0)
-shname = wb.sheet_by_index(1)
+wb2 = xlrd.open_workbook("Names.xlsx")
+shname = wb2.sheet_by_index(0)
 
 
 partnerIDsDict = {}
@@ -254,7 +255,6 @@ for i in range(len(partnersLink)):
 			integrations[name + " | " + j + " | " + integrationID[k]]={
 				'SFDC Integration ID': integrationID[k],
 				'SFDC Partner ID': partnerID,
-				'#partner#': name,
 				'Product Integration': j,
 				'Integration Name': "",
 
@@ -312,7 +312,6 @@ for i in range(11, shmain.nrows-2):
 		integrations[str(i) + " | " + j]={
 			'SFDC Integration ID': integrationID,
 			'SFDC Partner ID': pID,
-			'#partner#': name,
 			'Product Integration': pi,
 		}
 
